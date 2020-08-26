@@ -1,0 +1,13 @@
+{
+  "_id": "jksjad-2e2213",
+  "content": "Some text here, maybe even <b>html???</b>",
+  "itemType": 0,
+  "children": [
+    {
+      "_id": "jksjad-2e2213",
+      "content": "Some text here for solution, maybe even <b>html???</b>",
+      "itemType": 2,
+      "children": [{}]
+    }
+  ]
+}
