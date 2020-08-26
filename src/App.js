@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ItemTypeButton from "./components/ItemTypeButton";
 import ItemType from "./core/ItemType";
 import Mousetrap from "mousetrap";
@@ -17,16 +17,30 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App() {
   const [focusedItemType, setFocusedItemType] = useState(ItemType.Problem);
-  const [currentText, setCurrentText] = useState("Your problem here");
+  const [currentText, setCurrentText] = useState("");
+  const itemInputRef = useRef();
+
+  const focusInput = () => {
+    itemInputRef.current.focus();
+    itemInputRef.current.setSelectionRange(
+      itemInputRef.current.value.length,
+      itemInputRef.current.value.length
+    );
+  };
 
   useEffect(() => {
+    Mousetrap.unbind(["alt+1", "alt+2", "alt+3", "alt+s"]);
+
     Mousetrap.bind("alt+1", function () {
+      focusInput();
       setFocusedItemType(ItemType.Problem);
     });
     Mousetrap.bind("alt+2", function () {
+      focusInput();
       setFocusedItemType(ItemType.Solution);
     });
     Mousetrap.bind("alt+3", function () {
+      focusInput();
       setFocusedItemType(ItemType.Action);
     });
 
@@ -62,9 +76,13 @@ export default function App() {
           ></ItemTypeButton>
         </Horizontal>
         <Horizontal>
-          <ItemInput value={currentText} onChange={inputTextChange}></ItemInput>
+          <ItemInput
+            ref={itemInputRef}
+            value={currentText}
+            onChange={inputTextChange}
+          ></ItemInput>
         </Horizontal>
-        <Horizontal></Horizontal>
+        <Horizontal>Cards will go here</Horizontal>
       </Vertical>
     </>
   );

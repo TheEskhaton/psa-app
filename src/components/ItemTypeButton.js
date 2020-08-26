@@ -11,17 +11,18 @@ const StyledTypeSelector = styled.span`
   cursor: pointer;
   display: inline-block;
   text-align: center;
+  transition: all 200ms ease;
   background-color: #fafafa;
   ${(props) =>
     props.inverted &&
     css`
-      background-color: black;
+      background-color: #264653;
     `}
 
     ${(props) =>
       props.inverted &&
       css`
-        background-color: black;
+        background-color: #264653;
       `}
 
   ${ProblemIcon}{
@@ -48,7 +49,7 @@ const StyledTypeSelector = styled.span`
       `}
   }
   border-radius: 8px;
-  border: 2px solid black;
+  border: 2px solid #264653;
   margin-right: 5px;
 
   &:focus {

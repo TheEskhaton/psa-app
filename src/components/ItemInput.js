@@ -14,9 +14,10 @@ const TextArea = styled.textarea`
   }
 `;
 
-const ItemInput = ({ onChange = () => {}, value }) => {
+const ItemInput = ({ onChange = () => {}, value }, ref) => {
   return (
     <TextArea
+      ref={ref}
       value={value}
       onChange={onChange}
       className="mousetrap"
@@ -24,4 +25,4 @@ const ItemInput = ({ onChange = () => {}, value }) => {
   );
 };
 
-export default ItemInput;
+export default React.forwardRef(ItemInput);
